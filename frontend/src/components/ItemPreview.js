@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import agent from "../agent";
 import { connect } from "react-redux";
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ItemPreview = (props) => {
+  const [imgSrc, setImgSrc] = useState("Invalid Image Source");
   const item = props.item;
 
   const handleClick = (ev) => {
@@ -29,6 +30,10 @@ const ItemPreview = (props) => {
     }
   };
 
+  const handleDefaultImg = () => {
+    setImgSrc('./placeholder.png');
+  }
+
   return (
     <div
       className="card bg-dark border-light p-3"
@@ -39,6 +44,7 @@ const ItemPreview = (props) => {
         src={item.image}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
+        onError={()}
       />
       <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
@@ -51,6 +57,7 @@ const ItemPreview = (props) => {
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
+              
             />
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
