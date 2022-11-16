@@ -31,7 +31,12 @@ const ItemPreview = (props) => {
   };
 
   const handleDefaultImg = () => {
-    setImgSrc('./placeholder.png');
+    if(!item.image){
+
+      setImgSrc('./placeholder.png')
+    } else (
+      setImgSrc(item.image)
+    )
   }
 
   return (
@@ -41,9 +46,10 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={item.image}
+        src={imgSrc}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
+        onError={() => handleDefaultImg()}
       />
       <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
