@@ -20,7 +20,7 @@ const LoggedOutView = () => {
   );
 };
 
-const LoggedInView = (props) => {
+const LoggedInView = ({ currentUser }) => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
@@ -36,13 +36,13 @@ const LoggedInView = (props) => {
       </li>
 
       <li className="nav-item">
-        <Link to={`/@${props.currentUser.username}`} className="nav-link">
+        <Link to={`/@${currentUser.username}`} className="nav-link">
           <img
-            src={props.currentUser.image}
+            src={currentUser.image}
             className="user-pic pr-1"
-            alt={props.currentUser.username}
+            alt={currentUser.username}
           />
-          {props.currentUser.username}
+          {currentUser.username}
         </Link>
       </li>
     </ul>
