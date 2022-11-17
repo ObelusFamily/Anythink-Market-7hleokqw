@@ -31,9 +31,7 @@ const ItemPreview = (props) => {
   };
 
   const handleDefaultImg = () => {
-    if (!item.image) {
-      setImgSrc("./placeholder.png");
-    } else setImgSrc(item.image);
+    setImgSrc("./placeholder.png");
   };
   console.log(`image that loaded was ${item.image}`, item.image);
   return (
@@ -43,7 +41,7 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={imgSrc}
+        src={item.image}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
         onError={() => handleDefaultImg()}
