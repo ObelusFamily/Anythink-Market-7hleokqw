@@ -146,13 +146,13 @@ router.post("/", auth.required, function (req, res, next) {
         return res.sendStatus(401);
       }
 
+      if (!req.body.item.image) {
+        req.body.item.image = "/placeholder.png";
+      }
+
       var item = new Item(req.body.item);
 
       item.seller = user;
-
-      if (!item.image) {
-        item.image = "/placeholder.png";
-      }
 
       return item.save().then(function () {
         sendEvent("item_created", { item: req.body.item });
