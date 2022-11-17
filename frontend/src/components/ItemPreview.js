@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const ItemPreview = (props) => {
-  // const [imgSrc, setImgSrc] = useState("");
   const item = props.item;
 
   const handleClick = (ev) => {
@@ -29,10 +28,6 @@ const ItemPreview = (props) => {
       props.favorite(item.slug);
     }
   };
-
-  // const handleDefaultImg = () => {
-  //   setImgSrc("./placeholder.png");
-  // };
   console.log(`image that loaded was ${item.image}`, item.image);
   return (
     <div
@@ -41,13 +36,9 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={item.image}
+        src={item.image === "" || undefined ? "./placeholder.png" : item.image}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
-        onError={(event) => {
-          event.target.src = "./placeholder.png";
-          event.onerror = null;
-        }}
       />
       <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
