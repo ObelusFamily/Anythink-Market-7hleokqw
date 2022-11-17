@@ -47,8 +47,8 @@ const ItemPreview = (props) => {
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
         onError={(event) => {
-          event.target.src = "./placeholder.png";
           event.onerror = null;
+          event.target.src = "./placeholder.png";
         }}
       />
       <div className="card-body">
@@ -63,8 +63,8 @@ const ItemPreview = (props) => {
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
               onError={(event) => {
-                event.target.src = "./placeholder.png";
                 event.onerror = null;
+                event.target.src = "./placeholder.png";
               }}
             />
           </Link>
